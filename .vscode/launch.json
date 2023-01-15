@@ -1,0 +1,12 @@
+{
+    "version": "0.1.0",
+    "configurations": [
+        {
+            "name": "FinanceApp",
+            "program": "lib/main.dart",
+            "request": "launch",
+            "type": "dart",
+            "args": ["-t", "lib/main.dart"],
+        },
+    ]
+}
