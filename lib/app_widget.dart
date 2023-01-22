@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         supportedLocales: const [Locale('pt', 'BR')],
         theme: ThemeData(
+          fontFamily: 'Montserrat',
           primarySwatch: Colors.blue,
         ),
         home: const AutenticacaoPage());
