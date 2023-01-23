@@ -9,9 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Flutter Demo',
-        supportedLocales: const [Locale('pt', 'BR')],
         theme: ThemeData(
-          fontFamily: 'Montserrat',
           primarySwatch: Colors.blue,
         ),
         home: const AutenticacaoPage());

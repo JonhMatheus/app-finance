@@ -29,13 +29,60 @@ flutter:
 
 
   fonts:
-    - family: Montserrat
+    - family: Metropolis
       fonts:
-        - asset: assets/fonts/Montserrat-Regular.ttf
-        - asset: assets/fonts/Montserrat-ExtraBold.ttf
-        - asset: assets/fonts/Montserrat-Black.ttf
-        - asset: assets/fonts/Montserrat-Bold.ttf
-        - asset: assets/fonts/Montserrat-Medium.ttf
-        - asset: assets/fonts/Montserrat-SemiBold.ttf
+        - asset: assets/fonts/Metropolis-Black.otf
+          weight: 900
+        - asset: assets/fonts/Metropolis-BlackItalic.otf
+          weight: 900
+          style: italic
+
+        - asset: assets/fonts/Metropolis-ExtraBold.otf
+          weight: 800
+        - asset: assets/fonts/Metropolis-ExtraBoldItalic.otf
+          weight: 800
+          style: italic
+
+        - asset: assets/fonts/Metropolis-Bold.otf
+          weight: 700
+        - asset: assets/fonts/Metropolis-BoldItalic.otf
+          weight: 700
+          style: italic
+
+        - asset: assets/fonts/Metropolis-SemiBold.otf
+          weight: 600
+        - asset: assets/fonts/Metropolis-SemiBoldItalic.otf
+          weight: 600
+          style: italic
+
+        - asset: assets/fonts/Metropolis-Medium.otf
+          weight: 500
+        - asset: assets/fonts/Metropolis-MediumItalic.otf
+          weight: 500
+          style: italic
+
+        - asset: assets/fonts/Metropolis-Regular.otf
+          weight: 400
+        - asset: assets/fonts/Metropolis-RegularItalic.otf
+          weight: 400
+          style: italic
+
+        - asset: assets/fonts/Metropolis-Light.otf
+          weight: 300
+        - asset: assets/fonts/Metropolis-LightItalic.otf
+          weight: 300
+          style: italic
+
+        - asset: assets/fonts/Metropolis-ExtraLight.otf
+          weight: 200
+        - asset: assets/fonts/Metropolis-ExtraLightItalic.otf
+          weight: 200
+          style: italic
+
+        - asset: assets/fonts/Metropolis-Thin.otf
+          weight: 100
+        - asset: assets/fonts/Metropolis-ThinItalic.otf
+          weight: 100
+          style: italic
 
 

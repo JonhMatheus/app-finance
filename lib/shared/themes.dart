@@ -3,5 +3,5 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Themes {
-  static const corBackgrounBlack = Color(0xff272020);
+  static const corCinzaBase = Color(0xff272020);
 }
