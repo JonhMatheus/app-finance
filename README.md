@@ -4,4 +4,4 @@
 
 ### **Home_Page**
 
-<img src="/Login_Page.png" title="Login_Page" height="700" width="300">
+<img src="assets/images/login_page.jpg" title="Login_Page" height="450" width="200">
