@@ -9,10 +9,12 @@ class AutenticacaoPage extends StatefulWidget {
 }
 
 class _AutenticacaoPageState extends State<AutenticacaoPage> {
+  bool concordoPoliticas = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Themes.corVerdeEscuro,
       body: Padding(
         padding: const EdgeInsets.fromLTRB(20, 80, 20, 15),
         child: Column(
@@ -21,9 +23,9 @@ class _AutenticacaoPageState extends State<AutenticacaoPage> {
             _buildInput('Login'),
             const SizedBox(height: 15),
             _buildInput('Senha'),
-            const SizedBox(height: 25),
+            const SizedBox(height: 18),
             _buildSaveInfo(),
-            const SizedBox(height: 25),
+            const SizedBox(height: 20),
             _buildAcessar()
           ],
         ),
@@ -38,10 +40,7 @@ class _AutenticacaoPageState extends State<AutenticacaoPage> {
         children: [
           Image.asset(
             'assets/icons/logo.png',
-            scale: 4,
-          ),
-          const SizedBox(
-            height: 25,
+            scale: 1.3,
           ),
           const Align(
             alignment: Alignment.center,
@@ -49,6 +48,7 @@ class _AutenticacaoPageState extends State<AutenticacaoPage> {
               'Acessar',
               textAlign: TextAlign.center,
               style: TextStyle(
+                color: Themes.corCinzaBase,
                 fontSize: 28,
                 fontWeight: FontWeight.w800,
               ),
@@ -66,7 +66,7 @@ class _AutenticacaoPageState extends State<AutenticacaoPage> {
       decoration: BoxDecoration(
         color: const Color(0XffF6F6F6),
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: const Color(0xffE8E8E8)),
+        border: Border.all(color: Themes.corVerdeClaro),
       ),
       child: Text(
         titulo,
@@ -82,19 +82,31 @@ class _AutenticacaoPageState extends State<AutenticacaoPage> {
   Widget _buildSaveInfo() {
     return Row(
       children: [
-        Container(
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(3),
-              color: const Color(0xffF6F6F6),
-              border: Border.all(color: const Color(0xffE8E8E8))),
+        Checkbox(
+          value: concordoPoliticas,
+          checkColor: Colors.white,
+          activeColor: Themes.corVerdeClaro,
+          onChanged: (value) => setState(() {
+            concordoPoliticas == false
+                ? concordoPoliticas = true
+                : concordoPoliticas = false;
+          }),
         ),
-        const SizedBox(width: 8),
-        const Text(
-          'Salvar minhas informações',
-          style: TextStyle(
-            color: Color(0xff707070),
-            fontWeight: FontWeight.w500,
+        const Expanded(
+          child: Text.rich(
+            TextSpan(
+                text: 'Eu li e concordo com as ',
+                style: TextStyle(
+                    fontWeight: FontWeight.normal, color: Color(0xff535353)),
+                children: <TextSpan>[
+                  TextSpan(
+                    text: 'políticas de privacidade',
+                    style: TextStyle(
+                        height: 1.3,
+                        color: Color(0xff535353),
+                        fontWeight: FontWeight.w900),
+                  )
+                ]),
           ),
         )
       ],
