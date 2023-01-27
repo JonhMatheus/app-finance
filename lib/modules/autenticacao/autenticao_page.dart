@@ -1,5 +1,7 @@
 import 'package:app_finance/shared/themes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class AutenticacaoPage extends StatefulWidget {
   const AutenticacaoPage({Key? key}) : super(key: key);
@@ -10,6 +12,8 @@ class AutenticacaoPage extends StatefulWidget {
 
 class _AutenticacaoPageState extends State<AutenticacaoPage> {
   bool concordoPoliticas = false;
+  String? loginText;
+  String? senhaText;
 
   @override
   Widget build(BuildContext context) {
@@ -17,17 +21,19 @@ class _AutenticacaoPageState extends State<AutenticacaoPage> {
       backgroundColor: Themes.corVerdeEscuro,
       body: Padding(
         padding: const EdgeInsets.fromLTRB(20, 80, 20, 15),
-        child: Column(
-          children: [
-            _buildHeader(),
-            _buildInput('Login'),
-            const SizedBox(height: 15),
-            _buildInput('Senha'),
-            const SizedBox(height: 18),
-            _buildSaveInfo(),
-            const SizedBox(height: 20),
-            _buildAcessar()
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              _buildHeader(),
+              _buildInput('Login', loginText ?? ''),
+              const SizedBox(height: 15),
+              _buildInput('Senha', senhaText ?? ''),
+              const SizedBox(height: 18),
+              _buildSaveInfo(),
+              const SizedBox(height: 30),
+              _buildAcessar()
+            ],
+          ),
         ),
       ),
     );
@@ -59,24 +65,29 @@ class _AutenticacaoPageState extends State<AutenticacaoPage> {
     );
   }
 
-  Widget _buildInput(String titulo) {
+  Widget _buildInput(String titulo, String textForm) {
     return Container(
-      width: MediaQuery.of(context).size.width,
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: const Color(0XffF6F6F6),
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Themes.corVerdeClaro),
-      ),
-      child: Text(
-        titulo,
-        style: const TextStyle(
-          color: Color(0xffBDBDBD),
-          fontSize: 15,
-          fontWeight: FontWeight.w600,
+        width: MediaQuery.of(context).size.width,
+        padding: const EdgeInsets.fromLTRB(20, 8, 0, 8),
+        decoration: BoxDecoration(
+          color: const Color(0XffF6F6F6),
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: Themes.corVerdeClaro),
         ),
-      ),
-    );
+        child: TextField(
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            hintText: titulo,
+            hintStyle: const TextStyle(
+              color: Color(0xffBDBDBD),
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          onChanged: (String? text) {
+            text != null ? textForm = text : null;
+          },
+        ));
   }
 
   Widget _buildSaveInfo() {
