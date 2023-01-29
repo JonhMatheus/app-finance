@@ -1,3 +1,4 @@
+import 'package:app_finance/modules/home/home_page.dart';
 import 'package:app_finance/shared/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -127,20 +128,26 @@ class _AutenticacaoPageState extends State<AutenticacaoPage> {
   Widget _buildAcessar() {
     return Column(
       children: [
-        Container(
-          padding: const EdgeInsets.all(18),
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            color: Themes.corCinzaBase,
-            borderRadius: BorderRadius.circular(8),
+        GestureDetector(
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const HomePage()),
           ),
-          child: const Text(
-            'Acessar',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
+          child: Container(
+            padding: const EdgeInsets.all(18),
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              color: Themes.corCinzaBase,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: const Text(
+              'Acessar',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+              ),
             ),
           ),
         ),
