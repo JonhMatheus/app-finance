@@ -20,9 +20,9 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               _buildHeader(),
-              const SizedBox(height: 25),
-              const Divider(height: 2, color: Themes.corBrancoClaro),
-              const SizedBox(height: 25),
+              const SizedBox(height: 20),
+              const Divider(color: Themes.corBrancoClaro),
+              const SizedBox(height: 20),
               SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(children: [
@@ -37,32 +37,49 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Column _buildHeader() {
+  Widget _buildHeader() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
-        Icon(
+      children: [
+        const Icon(
           Icons.menu,
           color: Colors.white,
           size: 30,
         ),
-        SizedBox(
-          height: 20,
-        ),
-        Text(
-          'Hi, Arthur',
-          style: TextStyle(
-              fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Text(
-          'Perfil Consumidor',
-          style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-              color: Themes.corBrancoClaro),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Text(
+                  'Hi, Arthur',
+                  style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+                SizedBox(
+                  height: 12,
+                ),
+                Text(
+                  'Perfil Consumidor',
+                  style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.normal,
+                      color: Themes.corBrancoClaro),
+                ),
+              ],
+            ),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.asset(
+                'assets/icons/perfil.png',
+                scale: 1.8,
+              ),
+            )
+          ],
         ),
       ],
     );
@@ -112,18 +129,18 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
                 Text(
-                  '- R\$40,50 ',
+                  '- R\$ 40,50 ',
                   style: TextStyle(
-                      color: Colors.green,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12),
+                    color: Colors.green,
+                    fontSize: 12,
+                  ),
                 ),
                 Text(
                   'Mês anterior',
                   style: TextStyle(
-                      color: Themes.corBrancoClaro,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12),
+                    color: Themes.corBrancoClaro,
+                    fontSize: 12,
+                  ),
                 ),
               ],
             ),
