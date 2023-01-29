@@ -1,4 +1,6 @@
+import 'package:app_finance/modules/home/widgets/itens_widget.dart';
 import 'package:app_finance/shared/themes.dart';
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -161,12 +163,50 @@ class _HomePageState extends State<HomePage> {
               fontWeight: FontWeight.bold,
             )),
         const SizedBox(
-          height: 20,
+          height: 18,
         ),
         Row(
-          children: const [],
-        )
+          children: [
+            _buildFiltros('Preço', 'assets/icons/arrow.png'),
+            const SizedBox(width: 10),
+            _buildFiltros('Data', 'assets/icons/calendar.png'),
+          ],
+        ),
+        const ItensWidget(
+            titulo: 'Pizza de Sábado', data: '21 Dez 2023, 18:40 pm'),
+        const SizedBox(
+          height: 20,
+        ),
+        const DottedLine(
+          dashColor: Themes.corBrancoClaro,
+          dashGapLength: 3,
+          lineThickness: 1,
+        ),
       ],
+    );
+  }
+
+  Widget _buildFiltros(String titulo, String assetURL) {
+    return Container(
+      padding: const EdgeInsets.fromLTRB(15, 8, 15, 8),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: Themes.corBrancoClaro),
+      ),
+      child: Row(children: [
+        Text(
+          titulo,
+          style: const TextStyle(
+            color: Themes.corBrancoClaro,
+            fontSize: 14,
+          ),
+        ),
+        const SizedBox(width: 5),
+        Image.asset(
+          assetURL,
+          scale: 2,
+        )
+      ]),
     );
   }
 }
