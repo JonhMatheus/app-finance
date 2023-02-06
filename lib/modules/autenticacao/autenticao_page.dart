@@ -25,7 +25,7 @@ class _AutenticacaoPageState extends State<AutenticacaoPage> {
           child: Column(
             children: [
               _buildHeader(),
-              _buildInput('Login', loginText ?? ''),
+              _buildInput('Login ', loginText ?? ''),
               const SizedBox(height: 15),
               _buildInput('Senha', senhaText ?? ''),
               const SizedBox(height: 18),
