@@ -1,4 +1,5 @@
 import 'package:app_finance/modules/home/widgets/itens_widget.dart';
+import 'package:app_finance/shared/images.dart';
 import 'package:app_finance/shared/themes.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,26 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Themes.corCinzaBase,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet(
+            shape: const RoundedRectangleBorder(
+              side: BorderSide(style: BorderStyle.none),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(12),
+                topRight: Radius.circular(12),
+              ),
+            ),
+            isDismissible: true,
+            context: context,
+            builder: (BuildContext context) {
+              return _buildAdicionarGasto();
+            },
+          );
+        },
+        backgroundColor: Colors.green,
+        child: const Icon(Icons.add),
+      ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(25, 80, 25, 15),
         child: Column(
@@ -26,6 +47,7 @@ class _HomePageState extends State<HomePage> {
               const Divider(color: Themes.corBrancoClaro),
               const SizedBox(height: 20),
               SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   child: Row(children: [
                     _buildGastos('Gasto Mensal', 'assets/icons/grana.png', 1.8),
@@ -207,6 +229,67 @@ class _HomePageState extends State<HomePage> {
           scale: 2,
         )
       ]),
+    );
+  }
+
+  Widget _buildAdicionarGasto() {
+    // String valorSelecionado = 'a';
+    return Padding(
+      padding: const EdgeInsets.only(left: 15, right: 15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 6.5),
+          Align(
+            alignment: Alignment.center,
+            child: Image.asset(
+              Imagens.dash,
+              scale: 5,
+              color: Colors.black.withOpacity(0.5),
+            ),
+          ),
+          const SizedBox(height: 20),
+          const Text('Qual o tipo do gasto?'),
+          Container(
+            margin: const EdgeInsets.only(top: 10, bottom: 20),
+            decoration: BoxDecoration(
+              color: Colors.grey.withOpacity(0.2),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: DropdownButton(
+              isExpanded: true,
+              // value: valorSelecionado,
+              underline: const SizedBox(),
+              style: const TextStyle(color: Colors.black),
+              icon: const Icon(Icons.keyboard_arrow_down),
+              onChanged: (String? value) {
+                setState(() {
+                  // valorSelecionado = value!;
+                });
+              },
+              items: ['oi', 'eu']
+                  .map((value) => DropdownMenuItem<String>(
+                        onTap: () {
+                          setState(() {
+                            // _controller.idTipoSolicitacao = value.id;
+                            // _controller.obrigaPeriodo = value.obrigaPeriodo;
+                          });
+                        },
+                        alignment: AlignmentDirectional.centerStart,
+                        value: value,
+                        child: Text(value),
+                      ))
+                  .toList(),
+              hint: const Text(
+                '',
+                style: TextStyle(color: Colors.black, fontSize: 16),
+              ),
+            ),
+          ),
+          const Text('Qual a categoria do gasto?'),
+          const Text('Quanto foi o gasto?'),
+        ],
+      ),
     );
   }
 }
