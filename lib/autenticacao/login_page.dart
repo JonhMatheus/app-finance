@@ -11,7 +11,13 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Column(),
+      backgroundColor: Color(0xff333333),
+      body: Column(
+        
+        children: [
+          Text('Acessar', style: TextStyle(fontSize: 30, color:Colors.white, fontWeight: FontWeight.bold,))
+        ],
+      ), 
     );
   }
 }
