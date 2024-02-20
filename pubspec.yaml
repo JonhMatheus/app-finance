@@ -37,6 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   mobx: ^2.3.0+1
   flutter_mobx: ^2.2.0+2
+  esig_utils: ^5.4.1
+  loading_empty_error: ^3.4.4
+  one_context: ^2.1.0
 
 dev_dependencies: 
   flutter_test:

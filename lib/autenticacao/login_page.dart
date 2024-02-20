@@ -9,7 +9,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  LoginController controller = LoginController();
+  LoginController controller =
+      LoginController(); //chamada do login_controller.dart
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,9 +23,9 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               titulo(),
               const SizedBox(height: 20),
-              campoLogin('Email', false),
+              campoEmail(),
               const SizedBox(height: 20),
-              campoLogin('Senha', true),
+              campoSenha(),
               const SizedBox(height: 20),
               saveInfo(),
               const SizedBox(height: 40),
@@ -37,30 +39,49 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget campoLogin(String campoLogin, bool isPassword) {
+  Widget campoEmail() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Container(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(5),
           height: 55,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
               color: Colors.white, borderRadius: BorderRadius.circular(10)),
           child: TextField(
-              obscureText: isPassword ? controller.visibility : false,
+              decoration: const InputDecoration(
+                hintText: 'Email',
+                border: InputBorder.none,
+                prefixIcon: Icon(Icons.account_circle),
+              ),
+              controller: controller.campoEmail)),
+    );
+  }
+
+  Widget campoSenha() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Container(
+          padding: const EdgeInsets.all(5),
+          height: 55,
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+              color: Colors.white, borderRadius: BorderRadius.circular(10)),
+          child: TextField(
+              obscureText: controller.visibility,
               decoration: InputDecoration(
+                  hintText: 'Senha',
                   border: InputBorder.none,
-                  prefixIcon:
-                      Icon(isPassword ? Icons.lock : Icons.account_circle),
+                  prefixIcon: const Icon(Icons.lock),
                   suffixIcon: GestureDetector(
                     onTap: () {
-                      controller.visibility = !controller.visibility;
+                      controller.visibility =
+                          !controller.visibility; //inversão do valor do icon
                       setState(() {});
                     },
-                    child: Icon(isPassword ? Icons.visibility : null),
+                    child: const Icon(Icons.visibility),
                   )),
-              controller:
-                  isPassword ? controller.campoSenha : controller.campoEmail)),
+              controller: controller.campoSenha)),
     );
   }
 
@@ -101,22 +122,27 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget botaoAcesso() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        height: 55,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          color: const Color(0xFF272020),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: const Align(
-          alignment: Alignment.center,
-          child: Text(
-            'Acessar',
-            style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),
+    return GestureDetector(
+      onTap: () => controller.login(context),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          height: 55,
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            color: const Color(0xFF272020),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: const Align(
+            alignment: Alignment.center,
+            child: Text(
+              'Acessar',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: Colors.white),
+            ),
           ),
         ),
       ),
