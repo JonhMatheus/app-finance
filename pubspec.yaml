@@ -29,9 +29,7 @@ flutter:
   uses-material-design: true
 
 assets:
-  #
-  #
-  - assets/image3.png
+  - assets/userpicture.png
 fonts:
   - family: Metropolis
     fonts:

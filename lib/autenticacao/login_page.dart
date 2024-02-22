@@ -56,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Container(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(5),
           height: 55,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
@@ -75,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Container(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(5),
           height: 55,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(

@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   Widget cabeca() {
     return Row(
       children: [
-        Image.asset('assets/image3.png', scale: 0.75),
+        Image.asset('assets/userpicture.png', scale: 0.75),
         const SizedBox(width: 15),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
