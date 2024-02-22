@@ -13,7 +13,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: const Color(0xFF272020),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(30, 70, 15, 0),
+        padding: const EdgeInsets.fromLTRB(15, 70, 0, 0),
         child: Column(
           children: [
             cabeca(),
