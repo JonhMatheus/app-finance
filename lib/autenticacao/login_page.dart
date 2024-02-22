@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/autenticacao/login_controller.dart';
 
 class LoginPage extends StatefulWidget {
@@ -11,7 +9,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  LoginController controller = LoginController();
+  LoginController controller =
+      LoginController(); // chama do login_controller.dart
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,9 +22,9 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               acessar(),
               const SizedBox(height: 20),
-              campoLogin('E-mail', false),
+              campoEmail(),
               const SizedBox(height: 20),
-              campoLogin('Senha', true),
+              campoSenha(),
               const SizedBox(height: 20),
               salvarInformacoes(),
               const SizedBox(height: 40),
@@ -53,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget campoLogin(String campoLogin, bool isPass) {
+  Widget campoEmail() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Container(
@@ -63,19 +62,40 @@ class _LoginPageState extends State<LoginPage> {
           decoration: BoxDecoration(
               color: Colors.white, borderRadius: BorderRadius.circular(8)),
           child: TextField(
-            decoration: InputDecoration(
+              decoration: const InputDecoration(
+                hintText: 'Email',
                 border: InputBorder.none,
-                prefixIcon: Icon(isPass ? Icons.lock : Icons.account_circle),
-                suffixIcon: GestureDetector(
-                    onTap: () {
-                      controller.visibility = !controller.visibility;
-                      setState(() {});
-                    },
-                    child: Icon(isPass ? Icons.visibility : null))),
-            obscureText: isPass ? controller.visibility : false,
-            controller: isPass ? controller.campoSenha : controller.campoEmail,
-          )),
+                prefixIcon: Icon(Icons.account_circle),
+              ),
+              controller: controller.campoEmail)),
     );
+  }
+
+  Widget campoSenha() {
+    return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        child: Container(
+          padding: const EdgeInsets.all(10),
+          height: 55,
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+              color: Colors.white, borderRadius: BorderRadius.circular(8)),
+          child: TextField(
+              obscureText: controller.visibility,
+              decoration: InputDecoration(
+                hintText: 'Senha',
+                border: InputBorder.none,
+                prefixIcon: const Icon(Icons.lock),
+                suffixIcon: GestureDetector(
+                  onTap: () {
+                    controller.visibility = !controller.visibility;
+                    setState(() {});
+                  },
+                  child: const Icon(Icons.visibility),
+                ),
+              ),
+              controller: controller.campoSenha),
+        ));
   }
 
   Widget salvarInformacoes() {
