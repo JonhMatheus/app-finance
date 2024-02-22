@@ -28,17 +28,18 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-assets:
-  - assets/userpicture.png
-fonts:
-  - family: Metropolis
-    fonts:
-      - asset: assets/fonts/Metropolis-Black.otf
-      - asset: assets/fonts/Metropolis-Bold.otf
-      - asset: assets/fonts/Metropolis-ExtraBold.otf
-      - asset: assets/fonts/Metropolis-ExtraLight.otf
-      - asset: assets/fonts/Metropolis-Light.otf
-      - asset: assets/fonts/Metropolis-Medium.otf
-      - asset: assets/fonts/Metropolis-Regular.otf
-      - asset: assets/fonts/Metropolis-SemiBold.otf
-      - asset: assets/fonts/Metropolis-Thin.otf
+  assets:
+    - assets/userpicture.png
+
+  fonts:
+    - family: Metropolis
+      fonts:
+        - asset: assets/fonts/Metropolis-Black.otf
+        - asset: assets/fonts/Metropolis-Bold.otf
+        - asset: assets/fonts/Metropolis-ExtraBold.otf
+        - asset: assets/fonts/Metropolis-ExtraLight.otf
+        - asset: assets/fonts/Metropolis-Light.otf
+        - asset: assets/fonts/Metropolis-Medium.otf
+        - asset: assets/fonts/Metropolis-Regular.otf
+        - asset: assets/fonts/Metropolis-SemiBold.otf
+        - asset: assets/fonts/Metropolis-Thin.otf
