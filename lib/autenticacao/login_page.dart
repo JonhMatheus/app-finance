@@ -114,19 +114,25 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget botaoAcessar() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: Container(
-        height: 55,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-            color: Color(0xff272020), borderRadius: BorderRadius.circular(8)),
-        child: const Align(
-          alignment: Alignment.center,
-          child: Text(
-            'Acessar',
-            style: TextStyle(
-                color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+    return GestureDetector(
+      onTap: () => controller.login(context),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        child: Container(
+          height: 55,
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+              color: const Color(0xff272020),
+              borderRadius: BorderRadius.circular(8)),
+          child: const Align(
+            alignment: Alignment.center,
+            child: Text(
+              'Acessar',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold),
+            ),
           ),
         ),
       ),
