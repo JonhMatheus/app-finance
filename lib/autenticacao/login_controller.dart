@@ -1,6 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/home/home_page.dart';
+import 'package:flutter_application_1/models/usuarios.dart';
+import 'package:flutter_application_1/utils/constant.dart';
 import 'package:loading_empty_error/snackbar.dart';
 import 'package:mobx/mobx.dart';
 part 'login_controller.g.dart';
@@ -14,22 +15,26 @@ abstract class _LoginControllerBase with Store {
 
   bool visibility = true;
 
-  List<String> usuarios = ['tarsinhomilgrau@flutter.com'];
-  List<String> senhas =['brasil10', 'elgotoso', 'minde'];
+  Usuarios? usuarioLogado;
 
-  login(BuildContext context){
-    bool resultado = usuarios.contains(campoEmail.text);
+  void login(BuildContext context) {
+    final bool resultado = banco
+        .where((element) => element.email == campoEmail.text)
+        .toList()
+        .isNotEmpty;
 
-    if(resultado){
-    int userPosition = usuarios.indexOf(campoEmail.text);
-    String userPassword = senhas[userPosition];
+    if (resultado) {
+      final Usuarios usuarioLogin = banco
+          .firstWhere((element) => element.email.contains(campoEmail.text));
+      usuarioLogado = usuarioLogin;
 
-      if(campoSenha.text == userPassword){
-      Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const HomePage()));
+      if (campoSenha.text == usuarioLogin.senha) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => const HomePage()));
       } else {
-      getEsigSnackBar('Senha Inválida', context: context, corFundo: Colors.red, icon: Icons.error);
+        getEsigSnackBar('Senha Inválida',
+            context: context, corFundo: Colors.red, icon: Icons.error);
       }
-    }  
+    }
   }
 }
