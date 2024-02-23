@@ -39,6 +39,17 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  Widget titulo() {
+    return const Align(
+      alignment: Alignment.center,
+      child: Text(
+        'Acessar',
+        style: TextStyle(
+            fontWeight: FontWeight.bold, fontSize: 30, color: Colors.white),
+      ),
+    );
+  }
+
   Widget campoEmail() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -102,25 +113,6 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget novaSenha() {
-    return const Text(
-      'Esqueceu a senha?',
-      style: TextStyle(
-          fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),
-    );
-  }
-
-  Widget titulo() {
-    return const Align(
-      alignment: Alignment.center,
-      child: Text(
-        'Acessar',
-        style: TextStyle(
-            fontWeight: FontWeight.bold, fontSize: 30, color: Colors.white),
-      ),
-    );
-  }
-
   Widget botaoAcesso() {
     return GestureDetector(
       onTap: () => controller.login(context),
@@ -146,6 +138,14 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget novaSenha() {
+    return const Text(
+      'Esqueceu a senha?',
+      style: TextStyle(
+          fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),
     );
   }
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/home/home_page.dart';
+import 'package:flutter_application_1/models/usuarios.dart';
+import 'package:flutter_application_1/utils/constantes.dart';
 import 'package:loading_empty_error/snackbar.dart';
 import 'package:mobx/mobx.dart';
 part 'login_controller.g.dart';
@@ -14,18 +16,22 @@ abstract class _LoginControllerBase with Store {
 
   bool visibility = true;
 
-  List<String> usuarios = ['johnzin123@gmail.com'];
+  late Usuarios usuariosLogado;
 
-  List<String> senhas = ['brasil10', 'mimde', 'aipai'];
-
-  login(BuildContext context) {
-    bool resultado = usuarios.contains(campoEmail.text);
+  void login(BuildContext context) {
+    // ignore: iterable_contains_unrelated_type
+    final bool resultado = banco
+        .where((element) => element.email == campoEmail.text)
+        .toList()
+        .isNotEmpty;
 
     if (resultado) {
-      int userPosition = usuarios.indexOf(campoEmail.text);
-      String userPassword = senhas[userPosition];
+      final Usuarios usuarioLogin = banco
+          .firstWhere((element) => element.email.contains(campoEmail.text));
 
-      if (campoSenha.text == userPassword) {
+      usuariosLogado = usuarioLogin;
+
+      if (campoSenha.text == usuarioLogin.senha) {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => const HomePage()));
       } else {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/autenticacao/login_controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -8,6 +9,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  LoginController controller = LoginController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +28,7 @@ class _HomePageState extends State<HomePage> {
   Widget cabeca() {
     return Row(
       children: [
-        Image.asset('assets/image3.png', scale: 0.75),
+        Image.network(controller.usuariosLogado.fotoUsuario, scale: 0.95),
         const SizedBox(width: 15),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,28 +40,13 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 5),
             Row(
               children: [
-                const Text(
-                  'Maria Antonieta',
-                  style: TextStyle(
+                Text(
+                  controller.usuariosLogado.nomeUsuario,
+                  style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,
                       fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(width: 10),
-                Container(
-                  decoration: BoxDecoration(
-                      color: const Color(0xFF3E3E3E),
-                      borderRadius: BorderRadius.circular(25)),
-                  child: const Padding(
-                    padding: EdgeInsets.all(4.0),
-                    child: Center(
-                      child: Icon(
-                        Icons.edit_note_rounded,
-                        color: Color(0xFF61C19E),
-                      ),
-                    ),
-                  ),
-                )
               ],
             ),
           ],
@@ -68,15 +55,15 @@ class _HomePageState extends State<HomePage> {
         const Icon(
           Icons.notifications_rounded,
           color: Colors.white,
-          size: 30,
+          size: 25,
         ),
         const SizedBox(
-          width: 10,
+          width: 15,
         ),
         const Icon(
           Icons.logout_rounded,
           color: Colors.white,
-          size: 30,
+          size: 25,
         )
       ],
     );
