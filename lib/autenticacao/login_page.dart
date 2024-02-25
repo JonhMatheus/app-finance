@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/autenticacao/login_controller.dart';
+import 'package:get_it/get_it.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -9,8 +10,15 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  LoginController controller =
-      LoginController(); //chamada do login_controller.dart
+  final LoginController controller =
+      GetIt.instance.get(); //chamada do login_controller.dart
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    controller.init(context);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

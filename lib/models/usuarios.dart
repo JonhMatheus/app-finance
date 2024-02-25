@@ -5,6 +5,7 @@ class Usuarios {
   String nomeUsuario;
   String fotoUsuario;
   String patrimonio;
+  List<String> tiposDeInvestimentos;
 
   Usuarios({
     required this.email,
@@ -12,6 +13,7 @@ class Usuarios {
     required this.nomeUsuario,
     required this.fotoUsuario,
     required this.patrimonio,
+    required this.tiposDeInvestimentos,
   });
 
   Usuarios copyWith({
@@ -20,6 +22,7 @@ class Usuarios {
     String? nomeUsuario,
     String? fotoUsuario,
     String? patrimonio,
+    List<String>? tiposDeInvestimentos,
   }) {
     return Usuarios(
       email: email ?? this.email,
@@ -27,6 +30,7 @@ class Usuarios {
       nomeUsuario: nomeUsuario ?? this.nomeUsuario,
       fotoUsuario: fotoUsuario ?? this.fotoUsuario,
       patrimonio: patrimonio ?? this.patrimonio,
+      tiposDeInvestimentos: tiposDeInvestimentos ?? this.tiposDeInvestimentos,
     );
   }
 }

@@ -40,6 +40,8 @@ dependencies:
   esig_utils: ^5.4.1
   loading_empty_error: ^3.4.4
   one_context: ^2.1.0
+  get_it: ^7.6.7
+  shared_preferences: ^2.2.2
 
 dev_dependencies: 
   flutter_test:
