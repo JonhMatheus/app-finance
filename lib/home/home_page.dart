@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/autenticacao/login_controller.dart';
+import 'package:flutter_application_1/shared/botaoWidget.dart';
 import 'package:get_it/get_it.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,12 +19,17 @@ class _HomePageState extends State<HomePage> {
       body: Padding(
         padding: const EdgeInsets.fromLTRB(30, 70, 15, 0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             cabeca(),
             const SizedBox(
               height: 35,
             ),
             corpo(),
+            const SizedBox(
+              height: 35,
+            ),
+            historicoTransacao(),
           ],
         ),
       ),
@@ -142,6 +148,42 @@ class _HomePageState extends State<HomePage> {
               color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
         ),
       ),
+    );
+  }
+
+  Widget historicoTransacao() {
+    return const Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Histórico de Transações',
+          style: TextStyle(
+              color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Row(
+          children: [
+            BotaoWidget(
+              nome: 'Filtrar',
+              corFonte: Color(0xFF34684C),
+              corContainer: Colors.white,
+              tipoIcone: Icons.search,
+              corIcone: Color(0xFF34684C),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            BotaoWidget(
+                nome: 'Adicionar',
+                corFonte: Colors.white,
+                corContainer: Color(0xFF34684C),
+                tipoIcone: Icons.add_circle,
+                corIcone: Colors.white)
+          ],
+        )
+      ],
     );
   }
 }
